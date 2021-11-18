@@ -89,7 +89,8 @@ export class ProductController {
   }
 
   @Delete('product/:id')
-  async delete(@Param(new ValidateObjectIdPipe('Product')) params) {
-    return await this.productService.delete(new ObjectID(params.id));
+  async delete(@Param(new ValidateObjectIdPipe('Product')) params): Promise<ProductEntity[]> {
+    await this.productService.delete(new ObjectID(params.id));
+    return await this.productService.findAll();
   }
 }
