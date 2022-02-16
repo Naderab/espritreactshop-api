@@ -16,8 +16,9 @@ import { ConfigModule } from '@nestjs/config';
     CacheModule.register(),
     TypeOrmModule.forRoot({
       type: 'mongodb',
-      host: process.env.DB_HOST,
-      database: process.env.DB_NAME,
+      //host: process.env.DB_HOST,
+      //database: process.env.DB_NAME,
+      url: process.env.URL,
       entities: [join(__dirname, '**/entities/**.entity{.ts,.js}')],
       synchronize: true,
       logger: 'advanced-console',
